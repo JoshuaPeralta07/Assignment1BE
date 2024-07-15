@@ -33,6 +33,7 @@ class Student(models.Model):
     def __str__(self):
         return self.name
 
+
 class Lecturer(models.Model):
     name = models.CharField(max_length=100)
     department = models.CharField(max_length=100)
@@ -45,6 +46,7 @@ class Lecturer(models.Model):
     def __str__(self):
         return self.name
 
+
 class Programme(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
@@ -56,4 +58,3 @@ class Programme(models.Model):
 
     def __str__(self):
         return self.name + "-" + self.lecturer.name
-
