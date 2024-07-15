@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from programmes.models import Programme, Lecturer, Student, ParentInfo, StudentTuitionFee, StudentMark
+from programmes.models import Programme, Lecturer, Student, StudentAttendance, StudentMark
 
 class ProgrammeSerializer(serializers.ModelSerializer):
     class Meta:
@@ -16,15 +16,11 @@ class StudentSerializer(serializers.ModelSerializer):
         model = Student
         fields = ['id', 'name', 'email', 'parents_info', 'tuition_fee', 'student_mark', 'phone', 'address']
 
-class ParentInfoSerializer(serializers.ModelSerializer):
+class StudentAttendanceSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ParentInfo
-        fields = ['id', 'name', 'email', 'phone', 'address']
+        model = StudentAttendance
+        fields = ['id', 'attendance']
 
-class StudentTuitionFeeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = StudentTuitionFee
-        fields = ['id', 'tuition_fee']
 
 class StudentMarkSerializer(serializers.ModelSerializer):
     class Meta:
