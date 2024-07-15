@@ -10,31 +10,20 @@ class StudentMark(models.Model):
     def __str__(self):
         return str(self.marks)
 
-class StudentTuitionFee(models.Model):
-    tuition_fee = models.IntegerField()
+
+class StudentAttendance(models.Model):
+    attendance = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return str(self.tuition_fee)
-
-class ParentInfo(models.Model):
-    name = models.CharField(max_length=100)
-    email = models.EmailField()
-    phone = models.CharField(max_length=15)
-    address = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.name
+        return self.attendance
 
 
 class Student(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
-    parents_info = models.ForeignKey(ParentInfo, on_delete=models.CASCADE)
-    tuition_fee = models.ForeignKey(StudentTuitionFee, on_delete=models.CASCADE)
+    attendance = models.ForeignKey(StudentAttendance, on_delete=models.CASCADE)
     student_mark = models.ForeignKey(StudentMark, on_delete=models.CASCADE)
     phone = models.CharField(max_length=15)
     address = models.TextField()

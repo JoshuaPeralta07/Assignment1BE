@@ -1,8 +1,7 @@
 from rest_framework import viewsets
 
-from programmes.models import Programme, Lecturer, Student, ParentInfo, StudentTuitionFee, StudentMark
-from programmes.serializers import ProgrammeSerializer, LecturerSerializer, StudentSerializer, ParentInfoSerializer, \
-    StudentTuitionFeeSerializer, StudentMarkSerializer
+from programmes.models import Programme, Lecturer, Student, StudentMark, StudentAttendance
+from programmes.serializers import ProgrammeSerializer, LecturerSerializer, StudentSerializer, StudentMarkSerializer, StudentAttendanceSerializer
 
 
 class ProgrammeViewSet(viewsets.ModelViewSet):
@@ -17,13 +16,9 @@ class StudentViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
 
-class ParentInfoViewSet(viewsets.ModelViewSet):
-    queryset = ParentInfo.objects.all()
-    serializer_class = ParentInfoSerializer
-
-class StudentTuitionFeeViewSet(viewsets.ModelViewSet):
-    queryset = StudentTuitionFee.objects.all()
-    serializer_class = StudentTuitionFeeSerializer
+class StudentAttendanceViewSet(viewsets.ModelViewSet):
+    queryset = StudentAttendance.objects.all()
+    serializer_class = StudentAttendanceSerializer
 
 class StudentMarkViewSet(viewsets.ModelViewSet):
     queryset = StudentMark.objects.all()
