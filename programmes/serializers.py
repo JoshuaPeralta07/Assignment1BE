@@ -17,16 +17,16 @@ class LecturerSerializer(serializers.ModelSerializer):
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Student
-        fields = ['id', 'name', 'email', 'attendance', 'student_mark', 'phone', 'address']
+        fields = ['id', 'name', 'email', 'phone', 'address']
 
 
 class StudentAttendanceSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudentAttendance
-        fields = ['id', 'attendance']
+        fields = ['id', 'attendance', 'student_key']
 
 
 class StudentMarkSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudentMark
-        fields = ['id', 'marks']
+        fields = ['id', 'student', 'mark']

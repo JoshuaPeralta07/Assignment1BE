@@ -2,17 +2,9 @@ from django.db import models
 
 
 # Create your models here.
-class StudentMark(models.Model):
-    marks = models.IntegerField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return str(self.marks)
-
-
 class StudentAttendance(models.Model):
     attendance = models.CharField(max_length=100)
+    student_key = models.ForeignKey('Student', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -20,11 +12,19 @@ class StudentAttendance(models.Model):
         return self.attendance
 
 
+class StudentMark(models.Model):
+    student = models.ForeignKey('Student', on_delete=models.CASCADE)
+    mark = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.student.name
+
+
 class Student(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
-    attendance = models.ForeignKey(StudentAttendance, on_delete=models.CASCADE)
-    student_mark = models.ForeignKey(StudentMark, on_delete=models.CASCADE)
     phone = models.CharField(max_length=15)
     address = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
