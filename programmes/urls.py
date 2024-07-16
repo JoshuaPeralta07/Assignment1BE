@@ -11,6 +11,6 @@ router.register('student', StudentViewSet, basename='student')
 
 
 urlpatterns = router.urls
-# urlpatterns += [
-#     path('register/', RegisterView.as_view(), name='register'),
-# ]
+urlpatterns += [
+    path('register/', RegisterView.as_view(), name='register'),
+]
