@@ -33,7 +33,7 @@ class Lecturer(models.Model):
 class Programme(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    level = models.CharField(max_length=15)
+    level = models.IntegerField()
     duration = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
